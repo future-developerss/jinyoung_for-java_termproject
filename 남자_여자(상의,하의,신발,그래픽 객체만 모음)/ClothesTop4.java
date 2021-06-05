@@ -5,6 +5,7 @@ import javax.swing.*;
 class ClothesTop4 extends JPanel{
 	JPanel a,b,c;
 	JLabel title, deco, explain;
+	JButton link;
 	private JRadioButton[] radio=new JRadioButton[5];
 	private String[] text={"Mustard","Blue","Violet","Black","White"};
 	private ImageIcon[] image={new ImageIcon("images/b_shorttshirt1.jpg"),new ImageIcon("images/b_shorttshirt2.jpg"),new ImageIcon("images/b_shorttshirt3.jpg"),new ImageIcon("images/b_shorttshirt4.jpg"),new ImageIcon("images/b_shorttshirt5.jpg")};
@@ -18,12 +19,15 @@ class ClothesTop4 extends JPanel{
 	//TITLE
 	ImageIcon icon=new ImageIcon("images/icon.jpg");
 	deco=new JLabel(icon);
-	title = new JLabel("반팔 티");
+	title = new JLabel("반팔 티    ");
 	title.setFont(font1);
 
+	link = new JButton("상품 보러가기");
+	link.addActionListener(new LinkListener());
 	a=new JPanel();
 	a.add(deco);
 	a.add(title);
+	a.add(link);
 
 	//IMAGE+색변화
 	b=new JPanel();
@@ -45,7 +49,7 @@ class ClothesTop4 extends JPanel{
 	b.add(radioPanel,BorderLayout.CENTER);
 
 	//상품정보
-	explain=new JLabel("<html>상품명: 메가로고 오버핏 반팔 티셔츠 뉴욕 양키스<br/><br/>가격: 59000<br/><br/>구매처: MLB<br/><br/>링크 주소: https://www.mlb-korea.com/main/mall/view</html>");
+	explain=new JLabel("<html><br/>상품명: 메가로고 오버핏 반팔 티셔츠 뉴욕 양키스<br/><br/>가격: 59000<br/><br/>구매처: MLB<br/><br/></html>");
 	explain.setFont(new Font("a시네마L", Font.BOLD, 20));
 	c=new JPanel();
 	c.add(explain);
@@ -69,6 +73,14 @@ class ClothesTop4 extends JPanel{
 			}else if (radio[4].isSelected()){
 				imagelabel.setIcon(image[4]);
 			}else imagelabel.setIcon(image[0]);
+		}
+	}
+
+	class LinkListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == link) {
+				new ClothesTopLink4();
+			}
 		}
 	}
 }

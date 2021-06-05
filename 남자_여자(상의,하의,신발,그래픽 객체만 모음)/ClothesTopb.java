@@ -5,6 +5,7 @@ import javax.swing.*;
 class ClothesTopb extends JPanel{
 	JPanel a,b,c;
 	JLabel title, deco, explain;
+	JButton link;
 	private JRadioButton[] radio=new JRadioButton[4];
 	private String[] text={"Red","Mint","Black","Blue"};
 	private ImageIcon[] image={new ImageIcon("images/g_longtshirt1.jpg"),new ImageIcon("images/g_longtshirt2.jpg"),new ImageIcon("images/g_longtshirt3.jpg"),new ImageIcon("images/g_longtshirt4.jpg")};
@@ -18,12 +19,16 @@ class ClothesTopb extends JPanel{
 	//TITLE
 	ImageIcon icon=new ImageIcon("images/icon.jpg");
 	deco=new JLabel(icon);
-	title = new JLabel("긴 티");
+	title = new JLabel("긴 티    ");
 	title.setFont(font1);
+
+	link = new JButton("상품 보러가기");
+	link.addActionListener(new LinkListener());
 
 	a=new JPanel();
 	a.add(deco);
 	a.add(title);
+	a.add(link);
 
 	//IMAGE+색변화
 	b=new JPanel();
@@ -45,7 +50,7 @@ class ClothesTopb extends JPanel{
 	b.add(radioPanel,BorderLayout.CENTER);
 
 	//상품정보
-	explain=new JLabel("<html>상품명: 아디다스 삼선 크루넥 긴팔티<br/><br/>가격: 109000<br/><br/>구매처: adidas<br/><br/>링크 주소: https://www.feelway.com/</html>");
+	explain=new JLabel("<html><br/>상품명: 아디다스 삼선 크루넥 긴팔티<br/><br/>가격: 109000<br/><br/>구매처: adidas<br/><br/></html>");
 	explain.setFont(new Font("a시네마L", Font.BOLD, 20));
 	c=new JPanel();
 	c.add(explain);
@@ -67,6 +72,13 @@ class ClothesTopb extends JPanel{
 			}else if (radio[3].isSelected()){
 				imagelabel.setIcon(image[3]);
 			}else imagelabel.setIcon(image[0]);
+		}
+	}
+	class LinkListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == link) {
+				new ClothesTopLinkb();
+			}
 		}
 	}
 }

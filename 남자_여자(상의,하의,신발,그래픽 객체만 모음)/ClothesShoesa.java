@@ -5,6 +5,7 @@ import javax.swing.*;
 class ClothesShoesa extends JPanel{
 	JPanel a,b,c;
 	JLabel title, deco, explain;
+	JButton link;
 	private JRadioButton[] radio=new JRadioButton[2];
 	private String[] text={"Beige","Black"};
 	private ImageIcon[] image={new ImageIcon("images/g_shoes1.jpg"),new ImageIcon("images/g_shoes2.jpg")};
@@ -18,12 +19,16 @@ class ClothesShoesa extends JPanel{
 	//TITLE
 	ImageIcon icon=new ImageIcon("images/icon.jpg");
 	deco=new JLabel(icon);
-	title = new JLabel("구두");
+	title = new JLabel("구두    ");
 	title.setFont(font1);
+
+	link = new JButton("상품 보러가기");
+	link.addActionListener(new LinkListener());
 
 	a=new JPanel();
 	a.add(deco);
 	a.add(title);
+	a.add(link);
 
 	//IMAGE+색변화
 	b=new JPanel();
@@ -45,7 +50,7 @@ class ClothesShoesa extends JPanel{
 	b.add(radioPanel,BorderLayout.CENTER);
 
 	//상품정보
-	explain=new JLabel("<html>상품명: 스틸레토 U라인 미들힐 구두<br/><br/>가격: 36000<br/><br/>구매처: Ishoes<br/><br/>링크 주소: https://ishoesmall.co.kr/</html>");
+	explain=new JLabel("<html><br/>상품명: 스틸레토 U라인 미들힐 구두<br/><br/>가격: 36000<br/><br/>구매처: Ishoes<br/><br/></html>");
 	explain.setFont(new Font("a시네마L", Font.BOLD, 20));
 	c=new JPanel();
 	c.add(explain);
@@ -65,5 +70,11 @@ class ClothesShoesa extends JPanel{
 			}else imagelabel.setIcon(image[0]);
 		}
 	}
-
+class LinkListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == link) {
+				new ClothesShoesLinka();
+			}
+		}
+	}
 }

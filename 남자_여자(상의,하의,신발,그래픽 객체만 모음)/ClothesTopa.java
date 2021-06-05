@@ -5,6 +5,7 @@ import javax.swing.*;
 class ClothesTopa extends JPanel{
 	JPanel a,b,c;
 	JLabel title, deco, explain;
+	JButton link;
 	private JRadioButton[] radio=new JRadioButton[4];
 	private String[] text={"Blue","White","Beige","Black"};
 	private ImageIcon[] image={new ImageIcon("images/g_longshirt1.jpg"),new ImageIcon("images/g_longshirt2.jpg"),new ImageIcon("images/g_longshirt3.jpg"),new ImageIcon("images/g_longshirt4.jpg")};
@@ -18,12 +19,15 @@ class ClothesTopa extends JPanel{
 	//TITLE
 	ImageIcon icon=new ImageIcon("images/icon.jpg");
 	deco=new JLabel(icon);
-	title = new JLabel("긴 셔츠");
+	title = new JLabel("긴 셔츠    ");
 	title.setFont(font1);
 
+	link = new JButton("상품 보러가기");
+	link.addActionListener(new LinkListener());
 	a=new JPanel();
 	a.add(deco);
 	a.add(title);
+	a.add(link);
 
 	//IMAGE+색변화
 	b=new JPanel();
@@ -45,7 +49,7 @@ class ClothesTopa extends JPanel{
 	b.add(radioPanel,BorderLayout.CENTER);
 
 	//상품정보
-	explain=new JLabel("<html>상품명: 헤지스 단색 면혼방 긴팔 셔츠<br/><br/>가격: 83350<br/><br/>구매처: CJ Onstyle<br/><br/>링크 주소: https://display.cjonstyle.com/</html>");
+	explain=new JLabel("<html><br/>상품명: 헤지스 단색 면혼방 긴팔 셔츠<br/><br/>가격: 83350<br/><br/>구매처: CJ Onstyle<br/><br/></html>");
 	explain.setFont(new Font("a시네마L", Font.BOLD, 20));
 	c=new JPanel();
 	c.add(explain);
@@ -67,6 +71,13 @@ class ClothesTopa extends JPanel{
 			}else if (radio[3].isSelected()){
 				imagelabel.setIcon(image[3]);
 			}else imagelabel.setIcon(image[0]);
+		}
+	}
+	class LinkListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == link) {
+				new ClothesTopLinka();
+			}
 		}
 	}
 }

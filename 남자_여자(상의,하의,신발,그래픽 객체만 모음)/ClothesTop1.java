@@ -5,6 +5,7 @@ import javax.swing.*;
 class ClothesTop1 extends JPanel{
 	JPanel a,b,c;
 	JLabel title, deco, explain;
+	JButton link;
 	private JRadioButton[] radio=new JRadioButton[2];
 	private String[] text={"Blue","White"};
 	private ImageIcon[] image={new ImageIcon("images/b_longshirt1.jpg"),new ImageIcon("images/b_longshirt2.jpg")};
@@ -18,12 +19,15 @@ class ClothesTop1 extends JPanel{
 	//TITLE
 	ImageIcon icon=new ImageIcon("images/icon.jpg");
 	deco=new JLabel(icon);
-	title = new JLabel("긴 셔츠");
+	title = new JLabel("긴 셔츠    ");
 	title.setFont(font1);
+	link = new JButton("상품 보러가기");
+	link.addActionListener(new LinkListener());
 
 	a=new JPanel();
 	a.add(deco);
 	a.add(title);
+	a.add(link);
 
 	//IMAGE+색변화
 	b=new JPanel();
@@ -45,10 +49,11 @@ class ClothesTop1 extends JPanel{
 	b.add(radioPanel,BorderLayout.CENTER);
 
 	//상품정보
-	explain=new JLabel("<html>상품명: Lacoste Cotton Oxford 38<br/><br/>가격: 84,577<br/><br/>구매처: Lacoste Dressinn <br/><br/>링크 주소: https://www.dressinn.com/%EC%9C%A0%ED%96%89/lacoste/645/m</html>");
-	explain.setFont(new Font("a시네마L", Font.BOLD, 20));
 	c=new JPanel();
+	explain=new JLabel("<html><br/>상품명: Lacoste Cotton Oxford 38<br/><br/>가격: 84,577<br/><br/>구매처: Lacoste Dressinn <br/><br/> </html>");
+	explain.setFont(new Font("a시네마L", Font.BOLD, 20));
 	c.add(explain);
+
 
 
 	//최종추가
@@ -65,5 +70,11 @@ class ClothesTop1 extends JPanel{
 			}else imagelabel.setIcon(image[0]);
 		}
 	}
-
+	class LinkListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == link) {
+				new ClothesTopLink1();
+			}
+		}
+	}
 }

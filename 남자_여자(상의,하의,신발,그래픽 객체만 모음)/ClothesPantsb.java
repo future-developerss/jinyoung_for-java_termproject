@@ -5,6 +5,7 @@ import javax.swing.*;
 class ClothesPantsb extends JPanel{
 	JPanel a,b,c;
 	JLabel title, deco, explain;
+	JButton link;
 	private JRadioButton[] radio=new JRadioButton[2];
 	private String[] text={"Beige","White"};
 	private ImageIcon[] image={new ImageIcon("images/g_shortpants1.jpg"),new ImageIcon("images/g_shortpants2.jpg")};
@@ -18,12 +19,16 @@ class ClothesPantsb extends JPanel{
 	//TITLE
 	ImageIcon icon=new ImageIcon("images/icon.jpg");
 	deco=new JLabel(icon);
-	title = new JLabel("반 바지");
+	title = new JLabel("반 바지    ");
 	title.setFont(font1);
+
+	link = new JButton("상품 보러가기");
+	link.addActionListener(new LinkListener());
 
 	a=new JPanel();
 	a.add(deco);
 	a.add(title);
+	a.add(link);
 
 	//IMAGE+색변화
 	b=new JPanel();
@@ -45,7 +50,7 @@ class ClothesPantsb extends JPanel{
 	b.add(radioPanel,BorderLayout.CENTER);
 
 	//상품정보
-	explain=new JLabel("<html>상품명: 트리코트 4부 반바지<br/><br/>가격: 32000<br/><br/>구매처: Runo<br/><br/>링크 주소: https://runo.co.kr/produc</html>");
+	explain=new JLabel("<html><br/>상품명: 트리코트 4부 반바지<br/><br/>가격: 32000<br/><br/>구매처: Runo<br/><br/></html>");
 	explain.setFont(new Font("a시네마L", Font.BOLD, 20));
 	c=new JPanel();
 	c.add(explain);
@@ -65,6 +70,12 @@ class ClothesPantsb extends JPanel{
 			}else imagelabel.setIcon(image[0]);
 		}
 	}
-
+class LinkListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == link) {
+				new ClothesPantsLinka();
+			}
+		}
+	}
 }
 

@@ -5,6 +5,7 @@ import javax.swing.*;
 class ClothesTopd extends JPanel{
 	JPanel a,b,c;
 	JLabel title, deco, explain;
+	JButton link;
 	private JRadioButton[] radio=new JRadioButton[4];
 	private String[] text={"Green","Navy","White","Black"};
 	private ImageIcon[] image={new ImageIcon("images/g_shorttshirt1.jpg"),new ImageIcon("images/g_shorttshirt2.jpg"),new ImageIcon("images/g_shorttshirt3.jpg"),new ImageIcon("images/g_shorttshirt4.jpg")};
@@ -18,12 +19,16 @@ class ClothesTopd extends JPanel{
 	//TITLE
 	ImageIcon icon=new ImageIcon("images/icon.jpg");
 	deco=new JLabel(icon);
-	title = new JLabel("반팔 티");
+	title = new JLabel("반팔 티    ");
 	title.setFont(font1);
+
+	link = new JButton("상품 보러가기");
+	link.addActionListener(new LinkListener());
 
 	a=new JPanel();
 	a.add(deco);
 	a.add(title);
+	a.add(link);
 
 	//IMAGE+색변화
 	b=new JPanel();
@@ -45,7 +50,7 @@ class ClothesTopd extends JPanel{
 	b.add(radioPanel,BorderLayout.CENTER);
 
 	//상품정보
-	explain=new JLabel("<html>상품명: Jeep 로고 반팔티<br/><br/>가격: 15900<br/><br/>구매처: Jeep<br/><br/>링크 주소: https://m.elandmall.com/</html>");
+	explain=new JLabel("<html><br/>상품명: Jeep 로고 반팔티<br/><br/>가격: 15900<br/><br/>구매처: Jeep<br/><br/></html>");
 	explain.setFont(new Font("a시네마L", Font.BOLD, 20));
 	c=new JPanel();
 	c.add(explain);
@@ -67,6 +72,13 @@ class ClothesTopd extends JPanel{
 			}else if (radio[3].isSelected()){
 				imagelabel.setIcon(image[3]);
 			}else imagelabel.setIcon(image[0]);
+		}
+	}
+	class LinkListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == link) {
+				new ClothesTopLinkc();
+			}
 		}
 	}
 }

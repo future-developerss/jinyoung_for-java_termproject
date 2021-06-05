@@ -5,6 +5,7 @@ import javax.swing.*;
 class ClothesTopc extends JPanel{
 	JPanel a,b,c;
 	JLabel title, deco, explain;
+	JButton link;
 	private JRadioButton[] radio=new JRadioButton[5];
 	private String[] text={"Yellow","Ivory","Pink","Beige","Navy"};
 	private ImageIcon[] image={new ImageIcon("images/g_shortshirt1.jpg"),new ImageIcon("images/g_shortshirt2.jpg"),new ImageIcon("images/g_shortshirt3.jpg"),new ImageIcon("images/g_shortshirt4.jpg"),new ImageIcon("images/g_shortshirt5.jpg")};
@@ -18,12 +19,16 @@ class ClothesTopc extends JPanel{
 	//TITLE
 	ImageIcon icon=new ImageIcon("images/icon.jpg");
 	deco=new JLabel(icon);
-	title = new JLabel("반팔 셔츠");
+	title = new JLabel("반팔 셔츠    ");
 	title.setFont(font1);
+
+	link = new JButton("상품 보러가기");
+	link.addActionListener(new LinkListener());
 
 	a=new JPanel();
 	a.add(deco);
 	a.add(title);
+	a.add(link);
 
 	//IMAGE+색변화
 	b=new JPanel();
@@ -45,7 +50,7 @@ class ClothesTopc extends JPanel{
 	b.add(radioPanel,BorderLayout.CENTER);
 
 	//상품정보
-	explain=new JLabel("<html>상품명: 오픈 카라 반팔 셔츠<br/><br/>가격: 39000<br/><br/>구매처: 후아유<br/><br/>링크 주소: https://www.elandmall.com/goods</html>");
+	explain=new JLabel("<html><br/>상품명: 오픈 카라 반팔 셔츠<br/><br/>가격: 39000<br/><br/>구매처: 후아유<br/><br/></html>");
 	explain.setFont(new Font("a시네마L", Font.BOLD, 20));
 	c=new JPanel();
 	c.add(explain);
@@ -69,6 +74,13 @@ class ClothesTopc extends JPanel{
 			}else if (radio[4].isSelected()){
 				imagelabel.setIcon(image[4]);
 			}else imagelabel.setIcon(image[0]);
+		}
+	}
+	class LinkListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == link) {
+				new ClothesTopLinkc();
+			}
 		}
 	}
 }
