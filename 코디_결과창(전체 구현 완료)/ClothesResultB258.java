@@ -6,9 +6,9 @@ public class ClothesResultB258 extends JFrame{
     JPanel p1,bottom, one, two, three, four;
     JLabel title, subtitle;
 	JTabbedPane tp, tp1;
-    RoundButton before, main;
+    RoundButton before, main, cal;
 
-    static RoundButton[] btn= new RoundButton[5];
+    static RoundButton[] btn= new RoundButton[3];
 
     public ClothesResultB258() {
         super("Clothes Result Page");
@@ -50,15 +50,18 @@ public class ClothesResultB258 extends JFrame{
 
 
 		//아래 메인, 이전 버튼
-        bottom = new JPanel();
-        bottom.setLayout(new BorderLayout());
+		bottom = new JPanel();
+        bottom.setLayout(new BorderLayout(500,500));
         before = new RoundButton("메인으로");	before.setBackground(new Color(102, 102, 102));
+		cal = new RoundButton("추천상품 계산해보기");	cal.setBackground(new Color(102, 102, 102));
         main = new RoundButton("이전으로");	main.setBackground(new Color(102, 102, 102));
 
 		before.addActionListener(new MyActionListener());
+		cal.addActionListener(new MyActionListener());
 		main.addActionListener(new MyActionListener());
 
-        bottom.add("East",before); 	bottom.add("West",main);
+        bottom.add("East",before); 	bottom.add("Center",cal); bottom.add("West",main);
+
         bottom.setBorder(BorderFactory.createEmptyBorder(0 , 80 , 50 , 80));
 		bottom.setBounds(0,700,1500,100); 
 		add(bottom);
@@ -85,11 +88,15 @@ private class MyActionListener implements ActionListener{
 				//이전페이지로 이동
 				new ClothesB_2Q2();
 				ClothesResultB258.this.setVisible(false);
+			}else if (b.getText().equals("추천상품 계산해보기"))
+			{
+					//계산기 객체 부르기
+				new Calculater("옷 계산해보기");
 			}//else
 			//{
 				//설문조사창 연결하기
 			//}
-		}
 	}
+}
 }
 
