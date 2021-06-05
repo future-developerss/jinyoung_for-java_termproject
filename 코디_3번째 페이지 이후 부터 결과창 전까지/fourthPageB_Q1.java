@@ -18,7 +18,7 @@ public class fourthPageB_Q1 extends JFrame {
 		contentPane.setLayout(new BorderLayout(0,0));
 		setContentPane(contentPane);
 		p1 = new JPanel();
-		p1.setLayout(new GridLayout(2,1, 30, 30));
+		p1.setLayout(new GridLayout(2,1, 10, 7));
 		p2 = new JPanel();
 		//p2.setBounds(150, 250, 500, 700);
 		p2.setBorder(BorderFactory.createEmptyBorder(0 , 200 , 100 , 200));
@@ -28,7 +28,7 @@ public class fourthPageB_Q1 extends JFrame {
 		bt_p3 = new JPanel();
 		bt_p3.setLayout(new GridLayout(1, 4, 10, 40));
 
-		Font font = new Font("a시네마L", Font.PLAIN, 50);
+		Font font = new Font("a시네마L", Font.PLAIN, 45);
 		Font font1 = new Font("a시네마L", Font.PLAIN, 30);
 
 		title = new JLabel("이의 오늘은?");
@@ -76,6 +76,10 @@ public class fourthPageB_Q1 extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
+	  public void paint(Graphics g) {
+        super.paint(g);
+        g.drawLine(150, 200, 1350, 200);
+    }
 
 	private class MyActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){

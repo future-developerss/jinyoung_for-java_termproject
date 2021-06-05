@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class ClothesG_3Q2 extends JFrame{
-    JPanel p1, p2, bt_p3, bt_p4, bottom, contentPane;
+    JPanel p1, p2, bt_p4, bottom, contentPane;
     JLabel title, subtitle, q2;
     RoundButton main; 
     static String[] text= {"면접/회사 출근", "친구 약속/여행", "근처 마실"};
@@ -21,14 +21,13 @@ public class ClothesG_3Q2 extends JFrame{
         p2.setBorder(BorderFactory.createEmptyBorder(0 , 200 , 100 , 200));
         MouseEv me = new MouseEv();
 
-        p2.setLayout(new GridLayout(8, 1, 10, 10));
-        bt_p3 = new JPanel();
-        bt_p3.setLayout(new GridLayout(1, 2, 10, 40));
+        p2.setLayout(new GridLayout(6, 1, 10, 10));
+
         bt_p4 = new JPanel();
-        bt_p4.setLayout(new GridLayout(1, 2, 10, 40));
+        bt_p4.setLayout(new GridLayout(1, 4, 10, 40));
 
         Font font = new Font("a시네마L", Font.PLAIN, 45);
-        Font font1 = new Font("a시네마L", Font.PLAIN, 25);
+        Font font1 = new Font("a시네마L", Font.PLAIN, 30);
 
         title = new JLabel("이의 오늘을 코디해 드립니다.");
         title.setBorder(BorderFactory.createEmptyBorder(30 , 0 , 0 , 0));
