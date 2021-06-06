@@ -65,11 +65,9 @@ public class firstPage extends JFrame{
 		public void actionPerformed(ActionEvent e){
 			JButton b=(JButton)e.getSource();
 			if (b.getText().equals("시작하기")){
-				//firstPage.this.nameInput.setText(nameInput.getText());
-				//new Realname(nameInput.getText());
-
 				//다음페이지로
-				new secondPage();
+				String name=firstPage.this.nameInput.getText();
+				new secondPage(name);
 				firstPage.this.setVisible(false); //private class로의 이벤트 클래스 만들어, 이전페이지 부르고-> 현재 페이지는 안보이게 (frame 전환)
 			}
 		}

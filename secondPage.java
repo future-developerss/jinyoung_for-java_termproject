@@ -11,9 +11,10 @@ public class secondPage extends JFrame{
     private JButton landomButton, surveyButton;
     private ImageIcon background_img=new ImageIcon("images/start_img.png");
     JLabel imageLabel1=new JLabel();
-
-    public secondPage() {
-		super("¥ÁΩ≈¿« ø¿¥√¿∫?");
+	public String name;
+    public secondPage(String msg) {
+		name=msg;
+		setTitle(name+"¿« ø¿¥√¿∫?");
         //setUndecorated(true);
         getContentPane().setBackground(Color.WHITE);
         //f.setBackground(new Color(255, 255, 255));
@@ -61,13 +62,13 @@ public class secondPage extends JFrame{
 			JButton b=(JButton)e.getSource();
 			if (b.getText().equals("¿¿¥‰¿∏∑Œ √ﬂ√µ πﬁ±‚"))
 			{
-				new thirdPage();
+				new thirdPage(secondPage.this.name);
 				secondPage.this.setVisible(false);
 			}
-			//else{
-				//∑Í∑ø∞¥√º ∫Œ∏£±‚
-				//secondPage.this.setVisible(false);
-			//}
+			else{
+				new RouletteFrame(secondPage.this.name);
+				secondPage.this.setVisible(false);
+			}
 		}
 	}
 
