@@ -11,9 +11,10 @@ public class thirdPage extends JFrame{
     private JButton clothesButton, foodButton,placeButton, cultureButton;
     private ImageIcon background_img=new ImageIcon("images/start_img.png");
     JLabel imageLabel1=new JLabel();
-
-    public thirdPage() {
-		super("당신의 오늘은?");
+	public String name;
+    public thirdPage(String msg) {
+		name=msg;
+		setTitle(name+"의 오늘은?");
         //setUndecorated(true);
         getContentPane().setBackground(Color.WHITE);
         //f.setBackground(new Color(255, 255, 255));
@@ -86,18 +87,18 @@ public class thirdPage extends JFrame{
 			JButton b=(JButton)e.getSource();
 			if (b.getText().equals("코디"))
 			{
-				new ClothesQ1();
+				new ClothesQ1(thirdPage.this.name);
 				thirdPage.this.setVisible(false);
 			}else if (b.getText().equals("음식"))
 			{
 				//음식 설문창
-				//new fourthPageQ1();
-				//thirdPage.this.setVisible(false);
+				new FoodQuestion1();
+				thirdPage.this.setVisible(false);
 			}else if (b.getText().equals("장소"))
 			{
 				//장소 설문창
-				//new fourthPageQ1();
-				//thirdPage.this.setVisible(false);
+				new PlaceQ_1();
+				thirdPage.this.setVisible(false);
 			}
 			else{
 				//문화 설문창
