@@ -9,8 +9,9 @@ public class DressRoulettePanel extends JPanel {
     Font font1 = new Font("SansSerif", Font.BOLD, 20);
     int clicked=0;
     JLabel imageLabel;
-
-    public DressRoulettePanel() {
+	public String name;
+    public DressRoulettePanel(String msg) {
+		name=msg;
         //setSize(400, 600);
         //setLocation(100, 50);
         setLayout(new GridBagLayout());
@@ -57,11 +58,11 @@ public class DressRoulettePanel extends JPanel {
         DressQueue q1 = new DressQueue(5);  // all data
         DressQueue q2 = new DressQueue(5);   // data displayed
 
-        q1.enqueue("ë°˜íŒ”ì…”ì¸  - ë°˜ë°”ì§€ - êµ¬ë‘");
-        q1.enqueue("ë°˜íŒ”í‹° - ë°˜ë°”ì§€ - ìš´ë™í™” ");
-        q1.enqueue("ê¸´íŒ”ì…”ì¸  - ê¸´ë°”ì§€ - êµ¬ë‘ ");
-        q1.enqueue("ê¸´íŒ”í‹° - ê¸´ë°”ì§€ -  ìš´ë™í™” ");
-        q1.enqueue("ê¸´íŒ”ì…”ì¸  - ê¸´ë°”ì§€ - ìš´ë™í™” ");
+        q1.enqueue("¹İÆÈ¼ÅÃ÷ - ¹İ¹ÙÁö - ±¸µÎ");
+        q1.enqueue("¹İÆÈÆ¼ - ¹İ¹ÙÁö - ¿îµ¿È­ ");
+        q1.enqueue("±äÆÈ¼ÅÃ÷ - ±ä¹ÙÁö - ±¸µÎ ");
+        q1.enqueue("±äÆÈÆ¼ - ±ä¹ÙÁö -  ¿îµ¿È­ ");
+        q1.enqueue("±äÆÈ¼ÅÃ÷ - ±ä¹ÙÁö - ¿îµ¿È­ ");
 
         for (int i = 0; i < q2.max; i++) {
             String r = q1.dequeue();    // delete data in queue
@@ -131,11 +132,11 @@ public class DressRoulettePanel extends JPanel {
             DressQueue q1 = new DressQueue(5);  // all data
             DressQueue q2 = new DressQueue(5);   // data displayed
 
-            q1.enqueue("ë°˜íŒ”ì…”ì¸  - ë°˜ë°”ì§€ - êµ¬ë‘");
-            q1.enqueue("ë°˜íŒ”í‹° - ë°˜ë°”ì§€ - ìš´ë™í™”");
-            q1.enqueue("ê¸´íŒ”ì…”ì¸  - ê¸´ë°”ì§€ - êµ¬ë‘");
-            q1.enqueue("ê¸´íŒ”í‹° - ê¸´ë°”ì§€ -  ìš´ë™í™”");
-            q1.enqueue("ê¸´íŒ”ì…”ì¸  - ê¸´ë°”ì§€ - ìš´ë™í™”");
+            q1.enqueue("¹İÆÈ¼ÅÃ÷ - ¹İ¹ÙÁö - ±¸µÎ");
+            q1.enqueue("¹İÆÈÆ¼ - ¹İ¹ÙÁö - ¿îµ¿È­");
+            q1.enqueue("±äÆÈ¼ÅÃ÷ - ±ä¹ÙÁö - ±¸µÎ");
+            q1.enqueue("±äÆÈÆ¼ - ±ä¹ÙÁö -  ¿îµ¿È­");
+            q1.enqueue("±äÆÈ¼ÅÃ÷ - ±ä¹ÙÁö - ¿îµ¿È­");
 
             for(int i=0; i<q2.max; i++) {
                 String r=q1.dequeue();
@@ -143,7 +144,7 @@ public class DressRoulettePanel extends JPanel {
             }
             while(clicked==0) {
                 try {
-                    Thread.sleep(50); // 0.01ì´ˆë¶€í„° (0.1x)ì´ˆë¡œ ì„œì„œíˆ ë”œë ˆì´
+                    Thread.sleep(50); // 0.01ÃÊºÎÅÍ (0.1x)ÃÊ·Î ¼­¼­È÷ µô·¹ÀÌ
                     String[] qdata=q2.pass();
                     for(int j=0; j<5; j++)
                         box[j].setText(qdata[4-j]);
@@ -161,7 +162,7 @@ public class DressRoulettePanel extends JPanel {
     class newWindow extends JFrame{
         newWindow() {
             setBackground(Color.WHITE);
-            setTitle("ì½”ë”” Rullet Result");
+            setTitle(name+"À» À§ÇÑ ·ê·¿ °á°ú");
             JPanel NewWindowContainer = new JPanel();
             setContentPane(NewWindowContainer);
             NewWindowContainer.setLayout(new GridLayout(2, 1));
@@ -174,26 +175,22 @@ public class DressRoulettePanel extends JPanel {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     super.mouseClicked(e);
-					if (box[1].getText()=="ë°˜íŒ”ì…”ì¸  - ë°˜ë°”ì§€ - êµ¬ë‘")
+					if (box[1].getText()=="¹İÆÈ¼ÅÃ÷ - ¹İ¹ÙÁö - ±¸µÎ")
 					{
-						new ClothesResultB367(); 
-
-					}else if (box[1].getText()=="ë°˜íŒ”í‹° - ë°˜ë°”ì§€ - ìš´ë™í™”")
+						new ClothesResultB367(DressRoulettePanel.this.name); 
+					}else if (box[1].getText()=="¹İÆÈÆ¼ - ¹İ¹ÙÁö - ¿îµ¿È­")
 					{
-						new ClothesResultB468(); 
-
-					}else if (box[1].getText()=="ê¸´íŒ”ì…”ì¸  - ê¸´ë°”ì§€ - êµ¬ë‘")
+						new ClothesResultB468(DressRoulettePanel.this.name);
+					}else if (box[1].getText()=="±äÆÈ¼ÅÃ÷ - ±ä¹ÙÁö - ±¸µÎ")
 					{
-						new ClothesResultB157(); 
-
-					}else if (box[1].getText()=="ê¸´íŒ”í‹° - ê¸´ë°”ì§€ -  ìš´ë™í™”")
+						new ClothesResultB157(DressRoulettePanel.this.name);
+					}else if (box[1].getText()=="±äÆÈÆ¼ - ±ä¹ÙÁö -  ¿îµ¿È­")
 					{
-						new ClothesResultB258(); 
-
+						new ClothesResultB258(DressRoulettePanel.this.name);
 					}else
-						{
-							new ClothesResultB158(); 
-						}
+					{
+							new ClothesResultB158(DressRoulettePanel.this.name);
+					}
 					dispose();
                 }
 				
@@ -207,7 +204,7 @@ public class DressRoulettePanel extends JPanel {
                 }
             });
 
-            JLabel newL = new JLabel("<ì½”ë”” Rullet Result>");
+            JLabel newL = new JLabel("<ÄÚµğ Rullet Result>");
             newL.setHorizontalAlignment(JLabel.CENTER);
             newL.setFont(new Font("SansSerif", Font.BOLD, 25));
 
