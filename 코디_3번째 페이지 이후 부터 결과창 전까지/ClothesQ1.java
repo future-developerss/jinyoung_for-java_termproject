@@ -8,9 +8,10 @@ public class ClothesQ1 extends JFrame{
     RoundButton main; 
     static String[] text= {"남자","여자"};
     static RoundButton[] btn= new RoundButton[2];
-
-    public ClothesQ1() {
-        super("Clothes Page");
+	public String name;
+    public ClothesQ1(String msg) {
+        name=msg;
+		setTitle(name+"의 선택은?");
         contentPane = new JPanel();
         contentPane.setLayout(new BorderLayout(0,0));
         setContentPane(contentPane);
@@ -28,7 +29,7 @@ public class ClothesQ1 extends JFrame{
         Font font = new Font("a시네마L", Font.PLAIN, 45);
         Font font1 = new Font("a시네마L", Font.PLAIN, 30);
 
-        title = new JLabel("이의 오늘을 코디해 드립니다.");
+        title = new JLabel(name+"이의 오늘을 코디해 드립니다.");
         title.setBorder(BorderFactory.createEmptyBorder(30 , 0 , 0 , 0));
         subtitle = new JLabel("당신을 위한 최고의 패션 추천을 위해, 다음의 질문에 답해주세요!");
         title.setHorizontalAlignment(JLabel.CENTER);
@@ -86,7 +87,7 @@ private class MyActionListener implements ActionListener{
 			if (b.getText().equals("이전으로"))
 			{
 				//이전페이지로 이동
-				new thirdPage();
+				new thirdPage(ClothesQ1.this.name);
 				ClothesQ1.this.setVisible(false);
 			}
 		}
@@ -97,11 +98,11 @@ private class AnswerListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			JButton b=(JButton)e.getSource();
 			if (b.getText().equals("남자")){
-					new fourthPageB_Q1();
+					new fourthPageB_Q1(ClothesQ1.this.name);
 					ClothesQ1.this.setVisible(false);
 			}else{
 				//여자
-				new fourthPageG_Q1();
+				new fourthPageG_Q1(ClothesQ1.this.name);
 				ClothesQ1.this.setVisible(false);
 			}
 		}

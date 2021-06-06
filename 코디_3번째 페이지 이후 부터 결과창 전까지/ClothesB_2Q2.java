@@ -8,9 +8,10 @@ public class ClothesB_2Q2 extends JFrame{
     RoundButton main; 
     static String[] text= {"면접/회사 출근", "친구 약속/여행", "근처 마실"};
     static RoundButton[] btn= new RoundButton[3];
-
-    public ClothesB_2Q2() {
-        super("Clothes Page");
+	public String name;
+    public ClothesB_2Q2(String msg) {
+		name=msg;
+        setTitle(name+"의 선택은?");
         contentPane = new JPanel();
         contentPane.setLayout(new BorderLayout(0,0));
         setContentPane(contentPane);
@@ -29,7 +30,7 @@ public class ClothesB_2Q2 extends JFrame{
         Font font = new Font("a시네마L", Font.PLAIN, 45);
         Font font1 = new Font("a시네마L", Font.PLAIN, 30);
 
-        title = new JLabel("이의 오늘을 코디해 드립니다.");
+        title = new JLabel(name+"이의 오늘을 코디해 드립니다.");
         title.setBorder(BorderFactory.createEmptyBorder(30 , 0 , 0 , 0));
         subtitle = new JLabel("당신을 위한 최고의 패션 추천을 위해, 다음의 질문에 답해주세요!");
         title.setHorizontalAlignment(JLabel.CENTER);
@@ -91,7 +92,7 @@ private class MyActionListener implements ActionListener{
 			if (b.getText().equals("이전으로"))
 			{
 				//이전페이지로 이동
-				new fourthPageB_Q1();
+				new fourthPageB_Q1(ClothesB_2Q2.this.name);
 				ClothesB_2Q2.this.setVisible(false);
 
 			}
@@ -103,15 +104,15 @@ private class AnswerListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			JButton b=(JButton)e.getSource();
 			if (b.getText().equals("면접/회사 출근")){
-				new ClothesResultB157();
+				new ClothesResultB157(ClothesB_2Q2.this.name);
 				ClothesB_2Q2.this.setVisible(false);
 			}else if (b.getText().equals("친구 약속/여행"))
 			{
-				new ClothesResultB157();
+				new ClothesResultB157(ClothesB_2Q2.this.name);
 				ClothesB_2Q2.this.setVisible(false);
 			}else{
 				//근처 마실
-				new ClothesResultB258();
+				new ClothesResultB258(ClothesB_2Q2.this.name);
 				ClothesB_2Q2.this.setVisible(false);
 			}
 		}
