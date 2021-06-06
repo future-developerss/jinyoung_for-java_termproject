@@ -9,16 +9,17 @@ public class ClothesResultB367 extends JFrame{
     RoundButton before, main, cal;
 
     static RoundButton[] btn= new RoundButton[3];
-
-    public ClothesResultB367() {
-        super("Clothes Result Page");
+	public String name;
+    public ClothesResultB367(String msg) {
+		name=msg;
+        setTitle(name+"을 위한 추천");
         p1 = new JPanel();
         p1.setLayout(new GridLayout(2,1, 10, 7));
 
 		//상단 문구
         Font font = new Font("a시네마L", Font.PLAIN, 45);
         Font font1 = new Font("a시네마L", Font.PLAIN, 25);
-        title = new JLabel("이의 오늘을 코디해 드립니다.");
+        title = new JLabel(name+"이의 오늘을 코디해 드립니다.");
         title.setBorder(BorderFactory.createEmptyBorder(30 , 0 , 0 , 0));
         subtitle = new JLabel("당신만을 위한, 오늘의 최적의 패션 추천은 다음과 같습니다.");
         title.setHorizontalAlignment(JLabel.CENTER);
@@ -86,16 +87,18 @@ private class MyActionListener implements ActionListener{
 			if (b.getText().equals("이전으로"))
 			{
 				//이전페이지로 이동
-				new ClothesB_1Q2();
+				new ClothesB_1Q2(ClothesResultB367.this.name);
 				ClothesResultB367.this.setVisible(false);
 			}else if (b.getText().equals("추천상품 계산해보기"))
 			{
 					//계산기 객체 부르기
 				new Calculater("옷 계산해보기");
-			}//else
-			//{
+			}else
+			{
 				//설문조사창 연결하기
-			//}
+				new survey(ClothesResultB367.this.name);
+				ClothesResultB367.this.setVisible(false);
+			}
 	}
 }
 }
